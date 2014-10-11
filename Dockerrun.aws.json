@@ -1,0 +1,15 @@
+{
+    "AWSEBDockerrunVersion": 1,
+    "Image": {
+        "Name": "some-docker-registry.elasticbeanstalk.com/property-service:latest"
+    },
+    "Authentication": {
+        "Bucket": "docker-artifacts",
+        "Key": ".dockercfg"
+    },
+    "Ports": [
+        {
+            "ContainerPort": "8080"
+        }
+    ]
+}
