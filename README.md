@@ -8,11 +8,12 @@ for your own project, or just take some tricks away.
 * The Java Application (the groupId and artifactId from [pom.xml](https://github.com/wonderb0lt/spring-boot-docker-cfn-sample/blob/master/pom.xml) are used throughout the docker files)
 * [docker.sh](https://github.com/wonderb0lt/spring-boot-docker-cfn-sample/blob/master/docker.sh) where most parameters are defined.
 * [Your CloudFormation template](https://github.com/wonderb0lt/spring-boot-docker-cfn-sample/blob/master/cfn/spring-boot-docker-cfn-sample.cfn.json)
+* The [.dockercfg](https://github.com/wonderb0lt/spring-boot-docker-cfn-sample/blob/master/.dockercfg) you have to have uploaded in a global artifcat bucket, containing credentials to your Docker registry.
 
 ## Infrastructure you need
 
-* **Regional artifact buckets (docker-REGION-artifacts)** - application versions for different regions are stored here
-* **Global artifact bucket** + **.dockercfg in the root of that bucket** - Authenication to your Docker Registry
+* **Regional artifact buckets (docker-$REGION-artifacts)** - application versions for different regions are stored here
+* **Global artifact bucket (docker-artifacts)** + **.dockercfg in the root of that bucket** - Authenication to your Docker Registry
 
 ## Step-by-step Guide
 
@@ -31,6 +32,7 @@ Given you want to create or update a stack with the software version x.y.z:
 ### TODOs
 
 * Provide a CFN template to create the docker buckets themselves.
+* Research how to use application.properties locally if you want to emulate a stage/live server.^   
 
 ## Contributors
 
