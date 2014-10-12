@@ -10,10 +10,8 @@ for your own project, or just take some tricks away.
 
 ## Infrastructure you need
 
-* Regional artifact buckets
-* Global artifact bucket
-* .dockercfg in artifact bucket
-* more TBD
+* **Regional artifact buckets (docker-REGION-artifacts)** - application versions for different regions are stored here
+* **Global artifact bucket** + **.dockercfg in the root of that bucket** - Authenication to your Docker Registry
 
 ## Step-by-step Guide
 
