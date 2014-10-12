@@ -7,7 +7,6 @@ REGISTRY="some-docker-registry.elasticbeanstalk.com"
 APP_NAME="spring-boot-docker-cfn-sample"
 DESCRIPTION="Spring Boot + Docker + CloudFormation sample"
 CONTEXT="Dockerfile"
-CONFIG="src/main/resources/application.properties"
 MAVEN_ARTIFACT="lt.wonderb0.example:spring-boot-docker-cfn-sample"
 REGIONS="us-east-1 eu-west-1"
 
