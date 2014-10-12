@@ -114,7 +114,7 @@
                     }
                 ]
             }
-        }
+        },
 
         "Environment": {
             "Type": "AWS::ElasticBeanstalk::Environment",
