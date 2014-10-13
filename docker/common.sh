@@ -31,15 +31,15 @@ create_eb_archive() {
 		ADDITIONAL_FILES=".ebextensions"
 	fi
 
-	sed -e "s/$APP_NAME:latest/$APP_NAME:$TAG/" ../Dockerrun.aws.json > Dockerrun.aws.json
+	sed -e "s/$APP_NAME:latest/$APP_NAME:$VERSION/" ../Dockerrun.aws.json > Dockerrun.aws.json
 
-	zip -r $APP_NAME-$TAG.zip Dockerrun.aws.json $ADDITIONAL_FILES
+	zip -r $APP_NAME-$VERSION.zip Dockerrun.aws.json $ADDITIONAL_FILES
 
 	cd ..
 
 
 	for region in $REGIONS; do
-		aws --region $region s3 cp build/$APP_NAME-$TAG.zip s3://docker-$region-artifacts/$APP_NAME/
+		aws --region $region s3 cp build/$APP_NAME-$VERSION.zip s3://bol-$region-artifacts/$APP_NAME/
 
 		sleep 1
 
