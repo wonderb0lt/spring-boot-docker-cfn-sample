@@ -4,10 +4,9 @@
     "Parameters": {
         "Version": {
             "Type": "String",
-            "Default": "1.0.2"
+            "Default": "1.0.0"
         }
     },
-
     "Resources": {
         "SampleRole": {
             "Type": "AWS::IAM::Role",
@@ -39,7 +38,10 @@
                                         "s3:GetObject",
                                         "s3:ListBucket"
                                     ],
-                                    "Resource": ["arn:aws:s3:::docker-artifacts", "arn:aws:s3:::docker-artifacts/*"]
+                                    "Resource": [
+                                        "arn:aws:s3:::docker-artifacts",
+                                        "arn:aws:s3:::docker-artifacts/*"
+                                    ]
                                 }
                             ]
                         }
@@ -47,22 +49,23 @@
                 ]
             }
         },
-
         "SampleApplication": {
             "Type": "AWS::ElasticBeanstalk::Application",
             "Properties": {
                 "Description": "Spring Boot + Docker + CFN EB-Application",
                 "ApplicationName": {
-                    "Fn::Join": ["-", [
-                        "spring-boot-docker-cfn-app-",
-                        {
-                            "Ref": "AWS::StackName"
-                        }
-                    ]]
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "spring-boot-docker-cfn-app-",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
                 }
             }
         },
-
         "EbVersion": {
             "Type": "AWS::ElasticBeanstalk::ApplicationVersion",
             "Properties": {
@@ -72,27 +75,32 @@
                 "Description": "Default Version",
                 "SourceBundle": {
                     "S3Bucket": {
-                        "Fn::Join": [ "-",
-                            ["docker",
+                        "Fn::Join": [
+                            "-",
+                            [
+                                "docker",
                                 {
                                     "Ref": "AWS::Region"
                                 },
-                                "artifacts"]
+                                "artifacts"
+                            ]
                         ]
                     },
                     "S3Key": {
-                        "Fn::Join": [ "",
-                            [ "spring-boot-docker-cfn-sample/spring-boot-docker-cfn-sample-",
+                        "Fn::Join": [
+                            "",
+                            [
+                                "spring-boot-docker-cfn-sample/spring-boot-docker-cfn-sample-",
                                 {
                                     "Ref": "Version"
                                 },
-                                ".zip"]
+                                ".zip"
+                            ]
                         ]
                     }
                 }
             }
         },
-
         "ConfigurationTemplate": {
             "Type": "AWS::ElasticBeanstalk::ConfigurationTemplate",
             "Properties": {
@@ -103,7 +111,6 @@
                 "SolutionStackName": "64bit Amazon Linux 2014.03 v1.0.1 running Docker 1.0.0"
             }
         },
-
         "EbAppInstanceProfile": {
             "Type": "AWS::IAM::InstanceProfile",
             "Properties": {
@@ -115,7 +122,6 @@
                 ]
             }
         },
-
         "Environment": {
             "Type": "AWS::ElasticBeanstalk::Environment",
             "Properties": {
@@ -144,8 +150,6 @@
                     }
                 ]
             }
-        },
-
-
+        }
     }
 }
