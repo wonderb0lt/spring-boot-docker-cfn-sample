@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Configuration
 @ComponentScan
+@Controller
 @EnableAutoConfiguration
 public class Application {
     @Autowired
@@ -18,9 +21,10 @@ public class Application {
     @Autowired
     private ApplicationSetup setup;
 
-    @Bean
-    public String greetingTemplate() {
-        return setup.getGreetingTemplate(); // TODO: There surely is a less convoluted way to expose this @Value
+    @RequestMapping("/hello")
+    @ResponseBody
+    public String sayHello() {
+        return setup.getGreeting();
     }
 
     public static void main(String[] args) {

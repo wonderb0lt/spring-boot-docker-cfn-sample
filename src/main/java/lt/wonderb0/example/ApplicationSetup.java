@@ -5,10 +5,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ApplicationSetup {
-    @Value("${echoservice.greetingTemplate:Hello there, _whom_!}")
-    private String greetingTemplate;
+    @Value("${echoservice.greeting:Hello, World!}")
+    private String greeting;
 
-    public String getGreetingTemplate() {
-        return greetingTemplate;
+    public String getGreeting() {
+        return greeting;
     }
 }
